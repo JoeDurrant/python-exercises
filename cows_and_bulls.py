@@ -1,4 +1,6 @@
 import random
+# Cows and bulls game: guessing a 4 digit number, a "cow" means a correct digit in the correct position,
+# a "bull" means a correct digit in the wrong position
 def cows_and_bulls():
     number = str(random.randint(1000,9999))#Generate random 4 digit number
     guessed = False
