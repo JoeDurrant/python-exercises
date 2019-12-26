@@ -17,6 +17,7 @@ class Graph:
         return neighbour_list
 
     def get_edge_value(self, source, destination):
-        return edges[source][destination]
-                   
-help(Graph)
+        return self.edges[source - 1][destination - 1]
+
+    def get_number_of_vertices(self):
+        return len(self.edges)
