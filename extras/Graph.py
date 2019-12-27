@@ -7,17 +7,17 @@ class Graph:
         self.edges = edges
         
     def adjacent(self, source, destination):
-        return edges[source - 1][destination - 1] > 0 # zero value indicates no edge between vertices
+        return edges[source][destination] > 0 # zero value indicates no edge between vertices
 
     def neighbours(self, vertex):
         neighbour_list = []
         for i in range(len(self.edges)):
-            if self.edges[vertex - 1][i] > 0:
-                neighbour_list.append(i+1) # Append ID number of node
+            if self.edges[vertex][i] > 0:
+                neighbour_list.append(i) # Append ID number of node
         return neighbour_list
 
     def get_edge_value(self, source, destination):
-        return self.edges[source - 1][destination - 1]
+        return self.edges[source][destination]
 
     def get_number_of_vertices(self):
         return len(self.edges)
