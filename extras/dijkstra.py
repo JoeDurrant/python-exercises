@@ -8,8 +8,13 @@ def dijkstra(graph, start):
     distance[start - 1] = 0 # Distance to start node is 0
     nodes = []
     for i in range(graph.get_number_of_vertices()): # Create list of nodes
-        nodes.append(i)
-        
+        nodes.append(i+1)
+    while len(nodes) > 0:
+        u = distance.index(min(distance))
+        del nodes[u]
+        neighbours = graph.neighbours(u+1)
+        for v in neighbours:
+            alt = 
     return
 
 
