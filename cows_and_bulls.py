@@ -1,21 +1,29 @@
 import random
-# Cows and bulls game: guessing a 4 digit number, a "cow" means a correct digit in the correct position,
-# a "bull" means a correct digit in the wrong position
 def cows_and_bulls():
-    number = str(random.randint(1000,9999))#Generate random 4 digit number
+    #number = str(random.randint(1000,9999))
+    number = str(1211) #Testing edge cases
     guessed = False
     while guessed == False:
         cow_count = 0
         bull_count = 0
         guess = input("Enter your guess (4 digit number): ")
-        if guess == number:
-            print("You guessed the number correctly, congratulations!")
+        if len(guess) != 4 or not guess.isdigit():
+            print("Your guess has to be a 4 digit number!")
+        elif guess == number:
+            print("Congratulations! You guessed the number!")
             guessed = True
         else:
+            already_guessed = [] # Track which digits have already been checked, stops cows being recounted when counting bulls
+            # Check cow count
             for i in range(4):
                 if guess[i] == number[i]:
                     cow_count += 1
-                elif guess[i] in number:
+                    already_guessed.append(guess[i]) # Fixes bull count
+
+            # Check bull count
+            for i in range(4):
+                if guess[i] != number[i] and guess[i] not in already_guessed and guess[i] in number:
+                    already_guessed.append(guess[i])
                     bull_count += 1
             print(str(cow_count) + " cow(s), " + str(bull_count) + " bull(s)")
 
