@@ -17,7 +17,9 @@ def rock_paper_scissors(player_number = 1):
         if player_number == 1:
             cpu_choice = computer_choice()
             choice = int(input("Enter your choice: "))
-            if cpu_choice == choice:
+            if choice < 1 or choice > 3:
+                print("You have to choose an option between 1 and 3!")
+            elif cpu_choice == choice:
                 print("It's a draw - you and the computer chose the same option!")
             elif choice == 1:
                 if cpu_choice == 2:
@@ -37,7 +39,9 @@ def rock_paper_scissors(player_number = 1):
         else:
             player_one_choice = int(input("Player one, enter your choice: "))
             player_two_choice = int(input("Player two, enter your choice: "))
-            if player_one_choice == player_two_choice:
+            if player_one_choice < 1 or player_one_choice > 3 or player_two_choice < 1 or player_two_choice > 3:
+                print("You have to choose an option between 1 and 3!")
+            elif player_one_choice == player_two_choice:
                 print("It's a draw - you both chose the same option!")
             elif player_one_choice == 1:
                 if player_two_choice == 2:
