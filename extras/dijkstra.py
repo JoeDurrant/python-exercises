@@ -23,10 +23,6 @@ def dijkstra(graph, source):
                     distance[neighbour] = a
                     unvisited[neighbour] = a
     return distance
-    #current error being caused by current_node always switching to node with lowest distance value after first loop.
-    #this causes code to choose source node again, need to change code so it doesn't change current_node to node that has
-    #been visited
-
     
 edges = [[0,0,0,0,1,4,0],
         [0,0,0,3,1,1,15],
