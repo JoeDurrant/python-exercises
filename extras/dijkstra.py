@@ -1,37 +1,41 @@
 from Graph import Graph
 def dijkstra(graph, source):
     distance = {}
-    unvisited = []
+    unvisited = {}
     for i in range(graph.get_number_of_vertices()):
         distance[i] = 1000
-        unvisited.append(i)
+        unvisited[i] = 1000
     distance[source] = 0
-    print(distance)
-    print(unvisited)
+    unvisited[source] = 0
     
     while len(unvisited) > 0:
-        current_node = min(distance, key=distance.get) # Should get ID number of source node on first loop
-        print(current_node)
-        unvisited.remove(current_node)
+        current_node = min(unvisited, key=unvisited.get) # Should get ID number of source node on first loop
+        print("node chosen is "  + str(current_node))
+        unvisited.pop(current_node)
+        print(distance)
+        print(unvisited)
         neighbours = graph.neighbours(current_node)
+        print(neighbours)
         for neighbour in neighbours:
             if neighbour in unvisited:
                 a = distance[current_node] + graph.get_edge_value(current_node,neighbour)
                 if a < distance[neighbour]:
                     distance[neighbour] = a
+                    unvisited[neighbour] = a
+    return distance
     #current error being caused by current_node always switching to node with lowest distance value after first loop.
     #this causes code to choose source node again, need to change code so it doesn't change current_node to node that has
     #been visited
 
     
 edges = [[0,0,0,0,1,4,0],
-        [0,0,0,0,1,1,15],
+        [0,0,0,3,1,1,15],
         [0,0,0,6,0,0,3],
-        [0,0,6,0,4,0,0],
+        [0,3,6,0,4,0,0],
         [1,1,0,4,0,0,0],
         [4,1,0,0,0,0,0],
         [0,15,3,0,0,0,0]]
 
 graph1 = Graph(edges)
 
-dijkstra(graph1,2)
+print(dijkstra(graph1,1))
