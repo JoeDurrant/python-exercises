@@ -1,13 +1,13 @@
 class Graph:
     """Create an immutable mathematical graph data type
 
-       Creates a graph object, based on an incidence matrix implementation
+       Creates a graph object, based on an adjacency matrix implementation
     """
     def __init__(self, edges):
         self.edges = edges
         
     def adjacent(self, source, destination):
-        return edges[source][destination] > 0 # zero value indicates no edge between vertices
+        return self.edges[source][destination] > 0 # zero value indicates no edge between vertices
 
     def neighbours(self, vertex):
         neighbour_list = []
